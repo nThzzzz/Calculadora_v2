@@ -25,7 +25,6 @@ Cansado de erros que sempre aparecem e estragam sua tentativa de estudo? **NÓS 
 
   ##  ⌈ COMPILAÇÃO E EXECUÇÃO ⌋
   
-  -  Com esse projeto em linguagem C juntamente dos nossos conhecimento adquiridos nas aulas de Geometria Analítica, decidimos que seria uma ótima ideia unir estes dois polos em um projeto, assim praticando cada vez mais oque nos é ensinado nas aulas. Determinatrix é um grande projeto que visa solucionar os roblemas dos anulos, sendo fácil, intuitivo e o ponto princial, uma proposta de alunos para alunos.
 -    Como compilar e executar nosso projeto?
 ### 1. Replit
 -    Abrir a plataforma Replit e puxar o codigo do github pelo link desse repositorio.
