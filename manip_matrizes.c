@@ -43,7 +43,9 @@ Fracao dividir(Fracao a, Fracao b) {
 }
 
 Fracao multiplicar(Fracao a, Fracao b) {
-
+  Fracao resultado;
+  resultado.numerador = a.numerador * b.numerador;
+  resultado.denominador = a.denominador * b.denominador;
   return simplificar(resultado);
 }
 
