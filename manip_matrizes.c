@@ -120,6 +120,12 @@ int comparar(Fracao a, Fracao b) {
 
 // Função para imprimir a fração
 void imprimirFracao(Fracao f) {
-
+  f = simplificar(f);
+  if (f.denominador == 1) {
+    printf("%5d    ", f.numerador); // Se denominador for 1, é um número inteiro
+  } else {
+    printf("%5d/%-5d", f.numerador,
+           f.denominador); // Caso contrário, imprime a fração
+  }
 }
 
