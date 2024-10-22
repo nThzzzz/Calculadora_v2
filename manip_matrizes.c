@@ -72,6 +72,10 @@ Fracao lerFracao() {
 }
 
 Fracao fracPadrao() {
+  Fracao f;
+
+  f.numerador = 0;
+  f.denominador = 1;
 
   return simplificar(f);
 }
