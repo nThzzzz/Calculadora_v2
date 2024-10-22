@@ -107,3 +107,9 @@ int mdc(int a, int b) {
 
   return mdc(b, a % b);
 }
+
+// Compara 2 fracoes
+int comparar(Fracao a, Fracao b) {
+  return 0;
+}
+
