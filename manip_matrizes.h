@@ -21,5 +21,8 @@ Fracao lerFracao();
 Fracao fracPadrao();
 Fracao frac_unitaria_Positiva();
 Fracao frac_unitaria_Negativa();
+int mdc(int a, int b);
+int comparar(Fracao a, Fracao b);
+void imprimirFracao(Fracao f);
 
 #endif
