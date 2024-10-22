@@ -6,7 +6,18 @@
 
 //------- FUNÇÕES DAS FRAÇÕES ---------
 Fracao simplificar(Fracao f) {
-  
+  int divisor_comum = mdc(f.numerador, f.denominador);
+
+  if (f.numerador == 0 || f.denominador == 0) {
+    f.numerador = 0;
+    f.denominador = 1;
+  } else {
+    f.numerador /= divisor_comum;
+    f.denominador /= divisor_comum;
+    if (f.denominador < 0) {
+      f.numerador = -1 * f.numerador;
+    }
+  }
   return f;
 }
 
