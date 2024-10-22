@@ -50,7 +50,24 @@ Fracao multiplicar(Fracao a, Fracao b) {
 }
 
 Fracao lerFracao() {
-  
+  Fracao f;
+  char frac[20];
+
+  // Tenta ler a fração (numerador/denominador) ou inteiro
+  scanf("%s", frac);
+
+  // Tenta analisar a entrada como uma fração
+  if (sscanf(frac, "%d/%d", &f.numerador, &f.denominador) == 2) { // Genial
+    // Se a fração for válida
+    if (f.denominador == 0) {
+      printf("Denominador não pode ser zero.\n");
+      f.denominador = 1;
+    }
+  } else {
+    // Se não for uma fração, leia como número inteiro
+    f.numerador = atoi(frac); // Converte de string pra numero
+    f.denominador = 1;
+  }
   return simplificar(f);
 }
 
