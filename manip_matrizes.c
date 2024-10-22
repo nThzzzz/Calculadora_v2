@@ -111,7 +111,11 @@ int mdc(int a, int b) {
 
 // Compara 2 fracoes
 int comparar(Fracao a, Fracao b) {
-  return 0;
+  if (a.numerador == b.numerador && a.denominador == b.denominador) {
+    return 0;
+  } else {
+    return 1;
+  }
 }
 
 // Função para imprimir a fração
