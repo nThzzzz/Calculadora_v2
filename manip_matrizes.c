@@ -113,3 +113,8 @@ int comparar(Fracao a, Fracao b) {
   return 0;
 }
 
+// Função para imprimir a fração
+void imprimirFracao(Fracao f) {
+
+}
+
