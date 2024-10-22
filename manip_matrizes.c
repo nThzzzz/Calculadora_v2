@@ -86,6 +86,8 @@ Fracao frac_unitaria_Positiva() {
 }
 
 Fracao frac_unitaria_Negativa() {
-
+  Fracao f;
+  f.numerador = -1;
+  f.denominador = 1;
   return simplificar(f);
 }
