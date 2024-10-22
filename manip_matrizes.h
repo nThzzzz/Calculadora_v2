@@ -11,5 +11,15 @@ typedef struct Fracao {
   int denominador;
 } Fracao;
 
+//------ FUNÇÕES DE FRAÇÃO ------
+Fracao simplificar(Fracao f);
+Fracao somar(Fracao a, Fracao b);
+Fracao subtrair(Fracao a, Fracao b);
+Fracao dividir(Fracao a, Fracao b);
+Fracao multiplicar(Fracao a, Fracao b);
+Fracao lerFracao();
+Fracao fracPadrao();
+Fracao frac_unitaria_Positiva();
+Fracao frac_unitaria_Negativa();
 
 #endif
