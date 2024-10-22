@@ -78,8 +78,8 @@ Cansado de erros que sempre aparecem e estragam sua tentativa de estudo? **NÓS 
      -  Gera a matriz transposta de uma matriz, invertendo os valores de linha para colunas e vice versa, exibindo a matriz ao final da função.
      #### 2.6. Deterinante
      -  Gera a determinante de uma matriz, sendo ela um núero que é exibido para o usuário ao final da função;
-     #### 2.7. Decomposição
-     -  Em construção;
+     #### 2.7. Decomposição LU
+     -  Um tipo de decomposição de matrizes, que retorna duas outras matrizes que a multiplicação é a matriz original;
      #### 2.8. Sitemas Lineares
      -  Gera um sistema linear indicado pelo usuário com as váriaveis e com os termos independentes e ao final retorna se é SPD , SPI ou SI e retorna uma possível solução para o sistema;
      #### 2.9. Histórico
