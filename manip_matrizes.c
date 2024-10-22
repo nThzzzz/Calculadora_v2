@@ -22,7 +22,9 @@ Fracao simplificar(Fracao f) {
 }
 
 Fracao somar(Fracao a, Fracao b) {
-
+  Fracao resultado;
+  resultado.numerador = a.numerador * b.denominador + b.numerador * a.denominador;
+  resultado.denominador = a.denominador * b.denominador;
   return simplificar(resultado);
 }
 
