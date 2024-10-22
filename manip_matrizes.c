@@ -36,7 +36,9 @@ Fracao subtrair(Fracao a, Fracao b) {
 }
 
 Fracao dividir(Fracao a, Fracao b) {
-  
+  Fracao resultado;
+  resultado.numerador = a.numerador * b.denominador;
+  resultado.denominador = a.denominador * b.numerador;
   return simplificar(resultado);
 }
 
