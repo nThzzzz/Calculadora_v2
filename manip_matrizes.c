@@ -73,15 +73,15 @@ Fracao lerFracao() {
 
 Fracao fracPadrao() {
   Fracao f;
-
   f.numerador = 0;
   f.denominador = 1;
-
   return simplificar(f);
 }
 
 Fracao frac_unitaria_Positiva() {
-
+  Fracao f;
+  f.numerador = 1;
+  f.denominador = 1;
   return simplificar(f);
 }
 
