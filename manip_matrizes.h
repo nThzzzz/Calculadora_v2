@@ -6,5 +6,10 @@
 #include <string.h>
 #include <ctype.h>
 
+typedef struct Fracao {
+  int numerador;
+  int denominador;
+} Fracao;
+
 
 #endif
