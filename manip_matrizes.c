@@ -5,6 +5,8 @@
 #include <string.h>
 
 //------- FUNÇÕES DAS FRAÇÕES ---------
+
+// Função para simplificar a fração
 Fracao simplificar(Fracao f) {
   int divisor_comum = mdc(f.numerador, f.denominador);
 
@@ -21,6 +23,7 @@ Fracao simplificar(Fracao f) {
   return f;
 }
 
+// Função para somar duas frações
 Fracao somar(Fracao a, Fracao b) {
   Fracao resultado;
   resultado.numerador = a.numerador * b.denominador + b.numerador * a.denominador;
@@ -28,6 +31,7 @@ Fracao somar(Fracao a, Fracao b) {
   return simplificar(resultado);
 }
 
+// Função para subtrair duas frações
 Fracao subtrair(Fracao a, Fracao b) {
   Fracao resultado;
   resultado.numerador = a.numerador * b.denominador - b.numerador * a.denominador;
@@ -35,6 +39,7 @@ Fracao subtrair(Fracao a, Fracao b) {
   return simplificar(resultado);
 }
 
+// Funcao que dividi frações
 Fracao dividir(Fracao a, Fracao b) {
   Fracao resultado;
   resultado.numerador = a.numerador * b.denominador;
@@ -42,6 +47,7 @@ Fracao dividir(Fracao a, Fracao b) {
   return simplificar(resultado);
 }
 
+// Função que multiplica frações
 Fracao multiplicar(Fracao a, Fracao b) {
   Fracao resultado;
   resultado.numerador = a.numerador * b.numerador;
@@ -49,6 +55,7 @@ Fracao multiplicar(Fracao a, Fracao b) {
   return simplificar(resultado);
 }
 
+// Função para ler um número inteiro ou uma fração
 Fracao lerFracao() {
   Fracao f;
   char frac[20];
@@ -71,6 +78,7 @@ Fracao lerFracao() {
   return simplificar(f);
 }
 
+// Pra usar em casos que se inicia como 0;
 Fracao fracPadrao() {
   Fracao f;
   f.numerador = 0;
@@ -78,6 +86,7 @@ Fracao fracPadrao() {
   return simplificar(f);
 }
 
+// Fracao que equivale a 1
 Fracao frac_unitaria_Positiva() {
   Fracao f;
   f.numerador = 1;
@@ -85,6 +94,7 @@ Fracao frac_unitaria_Positiva() {
   return simplificar(f);
 }
 
+// Fracao que equivale a -1
 Fracao frac_unitaria_Negativa() {
   Fracao f;
   f.numerador = -1;
