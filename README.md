@@ -52,38 +52,38 @@ Cansado de erros que sempre aparecem e estragam sua tentativa de estudo? **NÓS 
      - Depois de colar o código, apenas clique no botão "Run". Onde o programa será compilado e executado de forma correta.
 ### 2. Terminal
 -  Ao baixar a pasta e entrar no diretório dos arquivos pelo terminal de sua máquina, cole a seguinte linha de código.
-        <pre><code> gcc -o determinatrix main.c manip_determinatrix.c</pre></code>   
+        <pre><code> gcc -o matrizes main.c manip_matrizes.c</pre></code>   
       -   E logo em seguida.
-        <pre><code>./determiantrix</pre></code>
+        <pre><code>./matrizes</pre></code>
 
-## ⌈ FUNÇÕES ⌋
+  ## ⌈ FUNÇÕES ⌋
 
-### 1. Exibe_Matriz
--  Assim como o nome diz, uma função para exibir sua matriz, tornando mais intuitivo uma vez que você consegue ver os números todos formatados em forma de matriz.
+### 1. Menu Inicial
+-    Local onde o usuário deve se cadastrar para utilizar 100% do nosso software, tornando assim um ambiente mais controlado e seguro, abaixo seguem as opções dadas ao usuário:
+-    **Cadastro**:  Caso não tenha uma conta no **Determinatrix**, crie sua conta aqui com um CPF válido, senha e um nome de usuário.
+-    **Login**:  Caso já tenha uma conta e deseja acessa-la.
+-    **Sair**: Sair da aplicação.
 
-### 2. Soma
--  Soma de matrizes de mesma ordem, gerando assim uma matriz resultado que é exibida para o usuário assim que a operação é finalizada.
-
-### 3. Subtração
--  Subtração de matrizes de mesma ordem, gerando assim uma matriz resultado que é exibida para o usuário assim que a operação é finalizada.
-
-### 4. Multiplicação
--  Multiplicação de matrizes, e diferente das outras que são de mesma ordem, essa tem seu próprio sistema de verificação e exibe uma mensagem caso não seja possível a multiplicação, porém caso seja possivel termina gerando assim uma matriz resultado, que é exibida para o usuário assim que a operação é finalizada.
-
-### 5. Inversa
--  Gera a matriz inversa de uma matriz , somente se a mesma possuir uma inversa, caso contrário, a função retorna um recado ao usuário e finaliza a operação. 
-
-### 6. Transposta
--  Gera a matriz transposta de uma matriz, invertendo os valores de linha para colunas e vice versa, exibindo a matriz ao final da função.
-
-### 7. Deterinante
--  Gera a determinante de uma matriz, sendo ela um núero que é exibido para o usuário ao final da função;
-
-### 8. Decomposição
--  Em construção;
-
-### 8. Troca de base
--  Em construção;
+### 2. Menu de operações
+-    Local que hospeda uma vasta gama de operações que o usuário pode desfrutar a vontade para resolver quaisquer problemas, as operações seguem abaixo com uma breve explicação:
+     #### 2.1. Soma
+     -  Soma de matrizes de mesma ordem, gerando assim uma matriz resultado que é exibida para o usuário assim que a operação é finalizada.
+     #### 2.2. Subtração
+     -  Subtração de matrizes de mesma ordem, gerando assim uma matriz resultado que é exibida para o usuário assim que a operação é finalizada.
+     #### 2.3. Multiplicação
+     -  Multiplicação de matrizes, e diferente das outras que são de mesma ordem, essa tem seu próprio sistema de verificação e exibe uma mensagem caso não seja possível a multiplicação, porém caso seja possivel termina gerando assim uma matriz resultado, que é exibida para o usuário assim que a operação é finalizada.
+     #### 2.4. Inversa
+     -  Gera a matriz inversa de uma matriz , somente se a mesma possuir uma inversa, caso contrário, a função retorna um recado ao usuário e finaliza a operação. 
+     #### 2.5. Transposta
+     -  Gera a matriz transposta de uma matriz, invertendo os valores de linha para colunas e vice versa, exibindo a matriz ao final da função.
+     #### 2.6. Deterinante
+     -  Gera a determinante de uma matriz, sendo ela um núero que é exibido para o usuário ao final da função;
+     #### 2.7. Decomposição
+     -  Em construção;
+     #### 2.8. Sitemas Lineares
+     -  Gera um sistema linear indicado pelo usuário com as váriaveis e com os termos independentes e ao final retorna se é SPD , SPI ou SI e retorna uma possível solução para o sistema;
+     #### 2.9. Histórico
+     -  Assim como em uma calculadora comum, suas equações não são simplesmente descartadas, mas sim salvas em seu histórico para que seja possível fazer uma consulta posteriormente;
 
 ## ⌈ INTEGRANTES ⌋
 
