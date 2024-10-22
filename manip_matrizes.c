@@ -101,3 +101,9 @@ Fracao frac_unitaria_Negativa() {
   f.denominador = 1;
   return simplificar(f);
 }
+
+// Função para calcular o MDC (Máximo Divisor Comum)
+int mdc(int a, int b) {
+
+  return mdc(b, a % b);
+}
