@@ -56,22 +56,53 @@ Fracao multiplicar(Fracao a, Fracao b) {
 Fracao lerFracao() {
   Fracao f;
   char frac[20];
+  int numbarra = 0;  // para contar o número de barras na entrada
+  int valida = 0;  // para verificar se a entrada foi válida
 
-  // Tenta ler a fração (numerador/denominador) ou inteiro
-  scanf("%s", frac);
+  while (!valida) {
+    printf("Digite uma fração (EX: 3/4) ou um número inteiro: ");
+    scanf("%s", frac);
 
-  // Tenta analisar a entrada como uma fração
-  if (sscanf(frac, "%d/%d", &f.numerador, &f.denominador) == 2) { // Genial
-    // Se a fração for válida
-    if (f.denominador == 0) {
-      printf("Denominador não pode ser zero.\n");
-      f.denominador = 1;
+    // Verificar se há barras barras ou vírgulas
+    numbarra = 0;
+    for (int i = 0; i < strlen(frac); i++) {
+      if (frac[i] == '/') {
+        numbarra++;
+      }
+      if (frac[i] == ',' || (!isdigit(frac[i]) && frac[i] != '/' && frac[i] != '-')) {
+        printf("Use apenas números inteiros ou frações no formato a/b, tente novamente\n");
+        numbarra = 2; 
+        break;
+      }
     }
-  } else {
-    // Se não for uma fração, leia como número inteiro
-    f.numerador = atoi(frac); // Converte de string pra numero
-    f.denominador = 1;
+
+    if (numbarra > 1) {
+      printf("Digite a fração no formato a/b, tente novamente\n");
+      continue;
+    }
+
+    // Tentar analisar como fração
+    if (numbarra == 1) {
+      if (sscanf(frac, "%d/%d", &f.numerador, &f.denominador) == 2) {
+        if (f.denominador == 0) {
+          printf("O denominador não pode ser zero.\n");
+          continue;
+        }
+        valida = 1;  // entrada válida
+      } else {
+        printf("Entrada de fração inválida.\n");
+      }
+    } else {
+      // Tentar analisar como número inteiro
+      if (sscanf(frac, "%d", &f.numerador) == 1) {
+        f.denominador = 1;
+        valida = 1;  // entrada válida
+      } else {
+        printf("Entrada de número inválida.\n");
+      }
+    }
   }
+
   return simplificar(f);
 }
 
@@ -230,3 +261,59 @@ void menuinicial(pessoa pessoas[], int usuariologado) {
       printf(" Opção inválida, tente novamente\n");
       break;
     }
+  }
+}
+
+// ---------------------------------------- Funções de criação de Matrizes ----------------------------------------
+
+// Funcao que cria e armazena na memoria a uma matriz
+void cria_matriz(Fracao ***matriz, int linhas, int colunas, int segunda_matriz,
+                 int mesma_ordem) {
+  *matriz = (Fracao **)malloc(linhas * sizeof(Fracao *));
+  for (int i = 0; i < linhas; i++) {
+    (*matriz)[i] = (Fracao *)malloc(colunas * sizeof(Fracao));
+  }
+
+  switch (mesma_ordem) {
+  case 1:
+    break;
+  case 0:
+    printf("Digite o número de linhas da Matriz: \n");
+    scanf("%d", &linhas);
+    printf("Digite o número de linhas da Matriz: \n");
+    scanf("%d", &colunas);
+  default:
+    break;
+  }
+
+  switch (segunda_matriz) {
+  case 0:
+    for (int i = 0; i < linhas; i++) {
+      for (int j = 0; j < colunas; j++) {
+        printf("Digite o número da posição %d x %d da PRIMEIRA matriz: \n",
+               i + 1, j + 1);
+        (*matriz)[i][j] = lerFracao();
+      }
+    }
+    break;
+  case 1:
+    for (int i = 0; i < linhas; i++) {
+      for (int j = 0; j < colunas; j++) {
+        printf("Digite o número da posição %d x %d da SEGUNDA matriz: \n",
+               i + 1, j + 1);
+        (*matriz)[i][j] = lerFracao();
+      }
+    }
+    break;
+  default:
+    break;
+  }
+}
+
+// Função para liberar a matriz
+void free_matriz(Fracao **matriz, int linhas) {
+  for (int i = 0; i < linhas; i++) {
+    free(matriz[i]);
+  }
+  free(matriz);
+}

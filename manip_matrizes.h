@@ -38,5 +38,8 @@ int mdc(int a, int b);
 int comparar(Fracao a, Fracao b);
 void imprimirFracao(Fracao f);
 
+//---------- Cria matrizes ----------
+void cria_matriz(Fracao ***matriz, int linhas, int colunas, int segunda_matriz, int mesma_ordem);
+void free_matriz(Fracao **matriz, int linhas);
 
 #endif
