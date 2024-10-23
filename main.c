@@ -1,10 +1,15 @@
 #include "manip_matrizes.h"
-#include <ctype.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
+
+// compilar
+//  gcc -o calcmatriz main.c manip_matrizes.c
+//  ./calcmatriz
 
 int main() {
+  pessoa pessoas[10];
+  int verificacao;
+  int usuariologado = -1;
+  printf("%d\n", verificacao);
+  menuinicial(pessoas, usuariologado);
 
   return 0;
 }
