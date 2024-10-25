@@ -47,4 +47,10 @@ int arquivoexiste(const char *filename);
 void escrever(pessoa pessoas[], int quantidade);
 void ler(FILE *file, pessoa pessoas[], int quantidade);
 
+//--------------TXT---------------------
+void criaTXTHISTORICO(FILE **file,int usuariologado,pessoa pessoas[]);
+void gravaMatrizesEmTxt(Fracao **matriz1, Fracao **matriz2, Fracao **matrizresultante, int linhas1, int colunas1, int linhas2, int colunas2, int usuariologado,pessoa pessoas[],char opc);
+void lerhistorico(int usuariologado, pessoa pessoas[]);
+void gravaSistemaEmTxt(Fracao **equacoes, Fracao *independentes, Fracao *solucoes,int icognitas, int eqs, int usuariologado, pessoa pessoas[]);
+
 #endif
