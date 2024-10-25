@@ -56,7 +56,15 @@ Cansado de erros que sempre aparecem e estragam sua tentativa de estudo? **NÓS 
       -   E logo em seguida.
         <pre><code>./matrizes</pre></code>
 
-  ## ⌈ FUNÇÕES ⌋
+##  ⌈ INSTRUÇÕES DE USO DO PROJETO ⌋
+  
+-  Logo quando iniciar o programa, o menu inicial com as opções de cadastro, login e sair. Para começar faça o cadastro de usuário (**usuário teste: CPF: 12345678909 e SENHA: 123456**), logo após isso você sera redirecionado novamente para o menu inicial para que possa fazer o login.
+-  No login, utilize as mesmas credenciais do cadastro para criar seu usuário, com isso seu histórico sera criado automaticamente e você será redirecionado para o menu de operações.
+-  No menu de operações, basta escolher qual operação deseja fazer digitando a opção correspondente a cada operação, inclusive a de saida.
+-  Ao digitar a opção de saida, será redirecionado para o menu inicial novamente e para fechar completamente o programa e salvar suas credenciais permanentemente, digite novamente a opção correspondente a saida.
+
+
+## ⌈ FUNÇÕES ⌋
 
 ### 1. Menu Inicial
 -    Local onde o usuário deve se cadastrar para utilizar 100% do nosso software, tornando assim um ambiente mais controlado e seguro, abaixo seguem as opções dadas ao usuário:
