@@ -42,4 +42,9 @@ void imprimirFracao(Fracao f);
 void cria_matriz(Fracao ***matriz, int linhas, int colunas, int segunda_matriz, int mesma_ordem);
 void free_matriz(Fracao **matriz, int linhas);
 
+//------------Binário----------------
+int arquivoexiste(const char *filename);
+void escrever(pessoa pessoas[], int quantidade);
+void ler(FILE *file, pessoa pessoas[], int quantidade);
+
 #endif
