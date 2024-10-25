@@ -317,3 +317,48 @@ void free_matriz(Fracao **matriz, int linhas) {
   }
   free(matriz);
 }
+
+// ---------------------------------- Funções do Binário ----------------------- //
+
+// Função que cria o arquivo de historico
+void criaTXTHISTORICO(FILE **file, int usuariologado, pessoa pessoas[]) {
+  char nomeregistro[100];
+  sprintf(nomeregistro, "historico_%s.txt", pessoas[usuariologado].CPF);
+  strcpy(pessoas[usuariologado].nome_hist, nomeregistro);
+
+  *file = fopen(nomeregistro, "a");
+  if (*file) {
+    printf("Arquivo criado com sucesso!\n");
+  } else {
+    printf("Erro ao criar o arquivo!\n");
+  }
+
+  fclose(*file); // Fecha o arquivo apontado pelo ponteiro.
+}
+
+// Funcao que verifia de o binario ja foi criado ou nao
+int arquivoexiste(const char *filename) {
+  FILE *file = fopen(filename, "r");
+  if (file != NULL) {
+    fclose(file);
+    return 1; // Arquivo existe
+  }
+  return 0; // Arquivo não existe
+}
+
+// Funcao que escreve no binario
+void escrever(pessoa pessoas[], int quantidade) {
+  FILE *file = fopen("dados.bin", "wb");
+
+  fwrite(pessoas, sizeof(pessoa), 10, file);
+  fclose(file);
+}
+
+// Lê as informações e as atribui a variáveis
+void ler(FILE *file, pessoa pessoas[], int quantidade) {
+  file = fopen("dados.bin", "rb");
+
+  fread(pessoas, sizeof(pessoa), 10, file);
+
+  fclose(file);
+}
