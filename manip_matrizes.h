@@ -68,5 +68,6 @@ void soma(pessoa pessoas[], int usuariologado);
 void sub(pessoa pessoas[], int usuariologado);
 void multi(pessoa pessoas[], int usuariologado);
 void inversa(pessoa pessoas[],int usuariologado);
+Fracao determinante(Fracao **matriz, int n);
 
 #endif
