@@ -180,6 +180,7 @@ void menu(pessoa pessoas[], int usuariologado) {
          "|+|--------------------------------------\n");
 
   int linhas, colunas, n;
+  Fracao **matriz;
 
   while (condicao) {
     int opc;
@@ -207,6 +208,12 @@ void menu(pessoa pessoas[], int usuariologado) {
       menu(pessoas, usuariologado);
       break;
     case 6:
+      verifica_linhas(&linhas, &colunas);
+      cria_matriz(&matriz, linhas, colunas, 0, 1);
+      transposta(matriz, linhas, colunas, pessoas, usuariologado);
+      limpabuffer();
+      espera();
+      free_matriz(matriz, linhas);
       menu(pessoas, usuariologado);
       break;
     case 7:
@@ -729,6 +736,47 @@ void cadastrar(pessoa pessoas[], int usuariologado) {
     }
   }
 }
+
+
+// Função para imprimir a matriz de frações
+void printMatriz(Fracao **matriz, int linhas, int colunas) {
+  for (int i = 0; i < linhas; i++) {
+    for (int j = 0; j < colunas; j++) {
+      imprimirFracao(matriz[i][j]);
+    }
+    printf("\n");
+  }
+}
+
+// Funçao que mostra a da matriz
+void transposta(Fracao **matriz, int linhas, int colunas, pessoa pessoas[], int usuariologado) {
+    Fracao **matriztra;
+    cria_submatriz(&matriztra, colunas, linhas); 
+    
+    // Correção na transposição
+    for (int i = 0; i < linhas; i++) {
+        for (int j = 0; j < colunas; j++) {
+            matriztra[j][i] = matriz[i][j]; //a pika é que ele tava salvando errado
+        }
+    }
+
+    for (int i = 0; i < colunas; i++) {
+        for (int j = 0; j < linhas; j++) {
+            imprimirFracao(matriztra[i][j]);
+        }
+        printf("\n");
+    }
+
+    gravaMatrizesEmTxt(matriz, NULL, matriztra, linhas, colunas,linhas,colunas, usuariologado, pessoas, 'T');
+    
+    for (int i = 0; i < colunas; i++) {
+        free(matriztra[i]);
+    }
+    free(matriztra);
+    
+    return;
+}
+
 
 //------------------------- Funções Auxiliares --------------------------
 
