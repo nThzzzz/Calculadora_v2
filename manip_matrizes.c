@@ -903,6 +903,81 @@ void multi(pessoa pessoas[], int usuariologado) {
   free_matriz(matriz, linhas);
 }
 
+// Função para calcular a inversa
+void inversa(pessoa pessoas[], int usuariologado) {
+  Fracao **matriz;
+  int n;
+
+  printf("Digite a ordem da matriz a seguir: \n");
+  verifica_ordens(&n);
+  cria_matriz(&matriz, n, n, 0, 1);
+
+  Fracao det = determinante(matriz, n);
+  if (comparar(determinante(matriz, n), fracPadrao()) == 0) {
+    printf("Matriz não tem inversa (determinante é zero).\n");
+    limpabuffer();
+    espera();
+    return;
+  }
+
+  Fracao **inversa;
+  Fracao **cofatores;
+
+  cria_submatriz(&inversa, n, n);
+  cria_submatriz(&cofatores, n, n);
+
+  for (int i = 0; i < n; i++) {
+    for (int j = 0; j < n; j++) {
+      Fracao **submatriz;
+      cria_submatriz(&submatriz, n-1, n-1);
+
+      int subi = 0;
+      for (int a = 0; a < n; a++) {
+        if (a == i)
+          continue;
+        int subj = 0;
+        for (int b = 0; b < n; b++) {
+          if (b == j) {
+            continue;
+          }
+          submatriz[subi][subj] = matriz[a][b];
+          subj++;
+        }
+        subi++;
+      }
+
+      if ((i + j) % 2 == 0) {
+        cofatores[i][j] = multiplicar(frac_unitaria_Positiva(),
+                                      determinante(submatriz, n - 1));
+      } else {
+        cofatores[i][j] = multiplicar(frac_unitaria_Negativa(),
+                                      determinante(submatriz, n - 1));
+      }
+      // cofatores[i][j] = (float)((i + j) % 2 == 0 ? 1 : -1) *
+      // determinante(submatriz, n - 1);
+
+      free_matriz(submatriz, n-1);
+    }
+  }
+
+  // Transposta da matriz de cofatores
+  for (int i = 0; i < n; i++) {
+    for (int j = 0; j < n; j++) {
+      inversa[i][j] = dividir(cofatores[j][i], det);
+    }
+  }
+  gravaMatrizesEmTxt(matriz, NULL, inversa, n, n,n,n, usuariologado, pessoas, 'I');
+
+  limpaterminal();
+  printf("A matriz inversa é:\n");
+  printMatriz(inversa, n, n);
+  limpabuffer();
+  espera();
+
+  free_matriz(cofatores, n);
+  free_matriz(inversa, n);
+  free_matriz(matriz, n);
+}
 
 //------------------------- Funções Auxiliares --------------------------
 
