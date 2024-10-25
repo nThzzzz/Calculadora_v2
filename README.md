@@ -63,6 +63,11 @@ Cansado de erros que sempre aparecem e estragam sua tentativa de estudo? **NÓS 
 -  No menu de operações, basta escolher qual operação deseja fazer digitando a opção correspondente a cada operação, inclusive a de saida.
 -  Ao digitar a opção de saida, será redirecionado para o menu inicial novamente e para fechar completamente o programa e salvar suas credenciais permanentemente, digite novamente a opção correspondente a saida.
 
+##  ⌈ EXEMPLO DE USO DO PROJETO ⌋
+
+### 1. Menu Inicial
+
+
 
 ## ⌈ FUNÇÕES ⌋
 
