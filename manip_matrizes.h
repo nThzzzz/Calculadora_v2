@@ -69,5 +69,6 @@ void sub(pessoa pessoas[], int usuariologado);
 void multi(pessoa pessoas[], int usuariologado);
 void inversa(pessoa pessoas[],int usuariologado);
 Fracao determinante(Fracao **matriz, int n);
+void sistemalinear(pessoa pessoas[], int usuariologado);
 
 #endif
