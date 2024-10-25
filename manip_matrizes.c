@@ -592,3 +592,140 @@ void gravaSistemaEmTxt(Fracao **equacoes, Fracao *independentes,
 
   fclose(arquivo);
 }
+
+
+// ------------------- Funções principais -----------------------
+
+// Funçao responsavel pelo login do usuario
+void login(pessoa pessoas[], int usuariologado) {
+  limpaterminal();
+  char cpflogin[12];
+  char senhalogin[7];
+
+  printf("|------------------------------[Login]------------------------------|"
+         "\n");
+  printf("Digite o CPF: ");
+  scanf("%s", cpflogin);
+
+  if (strlen(cpflogin) != 11) {
+    printf("CPF inválido!\n");
+    limpabuffer();
+    espera();
+    limpaterminal();
+    menuinicial(pessoas, usuariologado);
+  }
+  limpabuffer();
+
+  for (int i = 0; i < 10; i++) {
+    if (strcmp(cpflogin, pessoas[i].CPF) == 0) {
+      printf("Digite sua senha: ");
+      scanf("%s", senhalogin);
+      if (strlen(senhalogin) != 6) {
+        printf("Senha inválida!\n");
+        limpabuffer();
+        espera();
+        menuinicial(pessoas, usuariologado);
+      }
+      limpabuffer();
+      if (strcmp(senhalogin, pessoas[i].senha) == 0) {
+        printf("Logado com sucesso\n");
+        usuariologado = i;
+        espera();
+        criaTXTHISTORICO(&pessoas[usuariologado].historico, usuariologado,
+                         pessoas);
+        menu(pessoas, usuariologado);
+        return;
+      } else {
+        printf("Senha incorreta\n");
+        espera();
+        menuinicial(pessoas, usuariologado);
+        return;
+      }
+    }
+  }
+  printf("CPF não cadastrado!\n");
+  espera();
+  menuinicial(pessoas, usuariologado);
+}
+
+// Funcao que cadastra os usuários
+void cadastrar(pessoa pessoas[], int usuariologado) {
+  limpaterminal();
+  char cpfcadastro[12];
+  char senhacadastro[7];
+  int cadastrados = 0;
+
+  printf("|------------------------------[Cadastro]----------------------------"
+         "|\n");
+  if (cadastrados == 9) {
+    printf("Limite de cadastro atingido!\n");
+    espera();
+    menuinicial(pessoas, usuariologado); // Chamando o novo menu
+    return;
+  } else {
+    printf("Digite seu CPF (Só pode possuir 11 dígitos): ");
+    scanf("%s", cpfcadastro);
+    if (strlen(cpfcadastro) != 11) {
+      printf("CPF inválido\n");
+      limpabuffer();
+      espera();
+      menuinicial(pessoas, usuariologado); // Chamando o novo menu
+      return;
+    }
+    limpabuffer();
+    for (int i = 0; i < 10; i++) {
+      if ((strcmp(cpfcadastro, pessoas[i].CPF) == 0)) {
+        printf("CPF já cadastrado\n");
+        espera();
+        menuinicial(pessoas, usuariologado); // Chamando o novo menu
+        return;
+      } else if ((strlen(cpfcadastro) != 11) ||
+                 (verificaCPF(cpfcadastro) == 0)) {
+        printf("CPF inválido!\n");
+        espera();
+        menuinicial(pessoas, usuariologado); // Chamando o novo menu
+        return;
+      } else if (pessoas[i].CPF[0] == '\0') {
+        printf("Digite sua senha (numérica com 6 dígitos): ");
+        scanf("%s", senhacadastro);
+        if (strlen(senhacadastro) != 6) {
+          limpabuffer();
+          printf("Senha inválida\n");
+          espera();
+          menuinicial(pessoas, usuariologado); // Chamando o novo menu
+          return;
+        }
+        limpabuffer();
+        if (strlen(senhacadastro) == 6) {
+          strcpy(pessoas[i].CPF, cpfcadastro);
+          strcpy(pessoas[i].senha, senhacadastro);
+          while (1) {
+            printf("Digite seu nome: ");
+            fgets(pessoas[i].nome, 100, stdin);
+            size_t len = strlen(pessoas[i].nome);
+            if (len > 0 && pessoas[i].nome[len - 1] == '\n') {
+              pessoas[i].nome[len - 1] = '\0';
+            }
+
+            if (strlen(pessoas[i].nome) < 5) {
+              printf(
+                  "Nome inválido (DEVE POSSUIR 5 LETRAS), tente novamente!\n");
+            } else {
+              break;
+            }
+          }
+          cadastrados += 1;
+          printf("Cadastro realizado com sucesso!\n");
+          espera();
+          menuinicial(pessoas, usuariologado); // Chamando o novo menu
+          return;
+        } else {
+          printf("Senha inválida. Deve ter 6 dígitos.\n");
+          espera();
+          menuinicial(pessoas, usuariologado); // Chamando o novo menu
+          return;
+        }
+      }
+    }
+  }
+}
