@@ -979,6 +979,53 @@ void inversa(pessoa pessoas[], int usuariologado) {
   free_matriz(matriz, n);
 }
 
+//Função para resolver a determinante das matrizes
+Fracao determinante(Fracao **matriz, int n) {
+    Fracao det = fracPadrao();  // Inicia com 0
+    Fracao somatorio = fracPadrao();  // Variável para acumular o determinante
+
+    if (n == 1) {
+        return matriz[0][0]; 
+    } else if (n == 2) {
+        // Caso base, determinante de matriz 2x2
+        return subtrair(multiplicar(matriz[0][0], matriz[1][1]),
+                        multiplicar(matriz[1][0], matriz[0][1]));
+    } else {
+        for (int x = 0; x < n; x++) {
+            // Alocando submatriz de tamanho (n-1)x(n-1)
+            Fracao **submatriz;
+            cria_submatriz(&submatriz, n-1, n-1);
+
+            for (int i = 1; i < n; i++) {
+                int subi = 0;
+                for (int j = 0; j < n; j++) {
+                    if (j == x) {
+                        continue;  // Pula a coluna que está sendo excluída
+                    }
+                    submatriz[i - 1][subi] = matriz[i][j];
+                    subi++;
+                }
+            }
+            // det += (x % 2 == 0 ? 1 : -1) * matriz[0][x] * determinante(submatriz, n
+            // - 1); // Vou reduzindo ate ficar 2:2
+
+            Fracao cofactor;
+            if (x % 2 == 0) {
+                cofactor = multiplicar(matriz[0][x], determinante(submatriz, n - 1));
+            } else {
+                cofactor = multiplicar(frac_unitaria_Negativa(), multiplicar(matriz[0][x], determinante(submatriz, n - 1)));
+            }
+
+            // Somando o cofactor 
+            somatorio = somar(somatorio, cofactor);
+            
+            free_matriz(submatriz, n-1);
+        }
+    }
+
+    return somatorio;
+}
+
 //------------------------- Funções Auxiliares --------------------------
 
 // Funcao que limpa o terminal pro usuario
