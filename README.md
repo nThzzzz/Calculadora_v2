@@ -76,7 +76,7 @@ Cansado de erros que sempre aparecem e estragam sua tentativa de estudo? **NÓS 
      -  Gera a matriz inversa de uma matriz , somente se a mesma possuir uma inversa, caso contrário, a função retorna um recado ao usuário e finaliza a operação. 
      #### 2.5. Transposta
      -  Gera a matriz transposta de uma matriz, invertendo os valores de linha para colunas e vice versa, exibindo a matriz ao final da função.
-     #### 2.6. Deterinante
+     #### 2.6. Determinante
      -  Gera a determinante de uma matriz, sendo ela um núero que é exibido para o usuário ao final da função;
      #### 2.7. Decomposição LU
      -  Um tipo de decomposição de matrizes, que retorna duas outras matrizes que a multiplicação é a matriz original;
