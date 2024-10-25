@@ -61,4 +61,9 @@ int verificaCPF(char *cpf);
 void verifica_linhas(int *linhas_rece, int *colunas_rece);
 void verifica_ordens(int *n);
 
+//--------------- Funções Principais ----------------------
+void printMatriz(Fracao **matriz, int linhas, int colunas);
+void transposta(Fracao **matriz, int linhas, int colunas,pessoa pessoas[],int usuariologado);
+void soma(pessoa pessoas[], int usuariologado);
+
 #endif
