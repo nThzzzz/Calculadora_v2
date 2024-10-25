@@ -67,5 +67,6 @@ void transposta(Fracao **matriz, int linhas, int colunas,pessoa pessoas[],int us
 void soma(pessoa pessoas[], int usuariologado);
 void sub(pessoa pessoas[], int usuariologado);
 void multi(pessoa pessoas[], int usuariologado);
+void inversa(pessoa pessoas[],int usuariologado);
 
 #endif
