@@ -1162,6 +1162,65 @@ void sistemalinear(pessoa pessoas[], int usuariologado) {
   free(solucoes);
 }
 
+// Funcao que decompoe uma matriz no modelo L e U
+void decomposicaoLU(pessoa pessoas[], int usuariologado) {
+  Fracao **matriz;
+  int n;
+  printf("Digite a ordem da matriz a seguir");
+  verifica_ordens(&n);
+  cria_matriz(&matriz, n, n, 0, 1);
+
+  Fracao **matrizL;
+  Fracao **matrizU;
+
+  cria_submatriz(&matrizL, n, n);
+  cria_submatriz(&matrizU, n, n);
+
+  for (int i = 0; i < n; i++) {
+    for (int j = 0; j < n; j++) {
+      if (i <= j)
+        matrizU[i][j] = matriz[i][j]; // Copia elementos de A para U
+      else
+        matrizU[i][j] = fracPadrao();
+
+      if (i == j)
+        matrizL[i][j] =
+            frac_unitaria_Positiva(); // Elementos da diagonal de L são 1
+      else if (i > j)
+        matrizL[i][j] = fracPadrao();
+    }
+  }
+
+  limpaterminal();
+  // Fatoração LU
+  for (int k = 0; k < n - 1; k++) {
+    for (int i = k + 1; i < n; i++) {
+      matrizL[i][k] =
+          dividir(matriz[i][k], matriz[k][k]); // Calcula o multiplicador
+      for (int j = k; j < n; j++) {
+        matriz[i][j] =
+            subtrair(matriz[i][j], multiplicar(matrizL[i][k], matriz[k][j]));
+        matrizU[i][j] = matriz[i][j];
+        // matriz[i][j] = matriz[i][j] - matrizL[i][k] * matriz[k][j];  //
+        // Eliminação matrizU[i][j] = matriz[i][j];   //Atualiza U com os
+        // valores resultantes
+      }
+    }
+  }
+  printf("Matriz U: \n");
+  printMatriz(matrizU, n, n);
+  printf("Matriz L: \n");
+  printMatriz(matrizL, n, n);
+  gravaMatrizesEmTxt(matriz, matrizU, matrizL, n, n,n,n,
+  usuariologado, pessoas, 'D');
+  limpabuffer();
+  espera();
+
+  free_matriz(matrizU, n);
+  free_matriz(matrizL, n);
+  free_matriz(matriz, n);
+}
+
 //------------------------- Funções Auxiliares --------------------------
 
 // Funcao que limpa o terminal pro usuario
