@@ -66,6 +66,46 @@ Cansado de erros que sempre aparecem e estragam sua tentativa de estudo? **NÓS 
 ##  ⌈ EXEMPLO DE USO DO PROJETO ⌋
 
 ### 1. Menu Inicial
+![image](https://github.com/user-attachments/assets/ba3e92b0-9c3f-43d2-8b4f-f9707152f5a1)
+
+### 2. Cadastro 
+-  Usuário (CPF: 12345678909 SENHA: 123456 NOME: Fernando)
+  
+![image](https://github.com/user-attachments/assets/47069b66-6ca3-4a99-b923-762ddd68fe47)
+
+### 3. Login
+-  Usuário (CPF: 12345678909 SENHA: 123456 NOME: Fernando)
+  
+![image](https://github.com/user-attachments/assets/f0c2b3a3-d0d0-4bb0-9701-c3ac0b980239)
+
+### 4. Menu de Operações
+![image](https://github.com/user-attachments/assets/d999930c-62db-4ef5-99ff-af769da7e8c0)
+
+### 5. Seleção de Soma
+![image](https://github.com/user-attachments/assets/f2a76283-bb05-46c0-a659-273a1612737d)
+
+### 6. Soma de matrizes 2 x 2
+![image](https://github.com/user-attachments/assets/52b13be9-9079-49ca-b744-6ac1aaf136d0)
+
+### 7. Digitando os valores das matrizes
+![image](https://github.com/user-attachments/assets/d3ab1454-ec85-4e20-8ca2-8a11b0f57524)
+
+### 8. Resultado da operação
+![image](https://github.com/user-attachments/assets/8e881768-aecb-4446-9e0b-914061f1badf)
+
+### 9. Histórico
+![image](https://github.com/user-attachments/assets/a4adaa31-83ce-43eb-9cd4-c6b8d12c4554)
+
+### 10. Visualizando Histórico
+![image](https://github.com/user-attachments/assets/ca785922-4806-4fd2-9baf-9fa75879e775)
+
+### 11. Sair do menu de operações
+![image](https://github.com/user-attachments/assets/3985f128-a18b-495a-b2c9-6e7b189cab2c)
+
+### 12. Sair do menu inicial
+![image](https://github.com/user-attachments/assets/46fa8f71-376a-4e79-b51c-38d9fdefd147)
+
+
 
 
 
