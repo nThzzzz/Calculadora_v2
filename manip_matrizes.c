@@ -729,3 +729,120 @@ void cadastrar(pessoa pessoas[], int usuariologado) {
     }
   }
 }
+
+//------------------------- Funções Auxiliares --------------------------
+
+// Funcao que limpa o terminal pro usuario
+void limpaterminal() {
+  system("cls || clear")
+      /*printf("teste")*/;
+}
+
+// Função que espera a ação do usuário para dar prosseguimento
+void espera() {
+  printf("Aperte ENTER para SAIR!\n");
+  limpabuffer();
+}
+
+// Funcao que limpa o buffer de entrada
+void limpabuffer() {
+  int c = 0;
+  while ((c = getchar()) != '\n' && c != EOF) {
+  }
+  return;
+}
+
+// Funcao que verifica se o CPF é válido
+int verificaCPF(char *cpf) {
+  int numeros_cpf[11];
+  int soma = 0;
+  int maxv1 = 10;
+  int maxv2 = 11;
+  int resto = 0;
+  int veri = 0;
+  int verificador1 = 0, verificador2 = 0;
+  for (int i = 0; i < 11; i++) {
+    numeros_cpf[i] = cpf[i] - 48;
+  }
+  for (int i = 0; i < 11; i++) {
+    // implementação da verificação de cpfs com todos os digitos iguais
+    if (numeros_cpf[i] == numeros_cpf[0]) {
+      veri += 1;
+    }
+  }
+  if (veri == 11) {
+    return 0;
+  } else {
+
+    for (int i = 0; i < 9; i++) {
+      soma += numeros_cpf[i] * maxv1;
+      maxv1--;
+    }
+
+    resto = soma % 11;
+
+    if (resto == 1 || resto == 0) {
+      verificador1 = 0;
+    } else {
+      verificador1 = 11 - resto;
+    }
+    soma = 0;
+
+    for (int i = 0; i < 10; i++) {
+      soma += numeros_cpf[i] * maxv2;
+      maxv2--;
+    }
+
+    resto = soma % 11;
+    if (resto == 1 || resto == 0) {
+      verificador2 = 0;
+    } else {
+      verificador2 = 11 - resto;
+    }
+
+    if (verificador1 == numeros_cpf[9] && verificador2 == numeros_cpf[10]) {
+      return 1;
+    } else {
+      return 0;
+    }
+  }
+}
+
+//Função que verifica as linhas e as colunas da matriz para serem maiores que zero
+void verifica_linhas(int *linhas_rece, int *colunas_rece){
+  while (1){
+    int linhas, colunas;
+    printf("Digite o número de linhas: ");
+    scanf("%d", &linhas);
+    printf("Digite o número de colunas: ");
+    scanf("%d", &colunas);
+    if(linhas <= 0 || colunas <= 0){
+      printf("Numeros inválidos, devem ser maiores que zero\n");
+      limpabuffer();
+      espera();
+    }else{
+      (*linhas_rece) = linhas;
+      (*colunas_rece) = colunas;
+      break;
+    }
+  }
+  return;
+}
+
+//Função que verifica a ordem da matriz para números maiores que zero
+void verifica_ordens(int *n){
+  while (1){
+    int ordem;
+    printf("Digite o número da ordem: ");
+    scanf("%d", &ordem);
+    if(ordem <= 0){
+      printf("Numero inválido, deve ser maior que zero\n");
+      limpabuffer();
+      espera();
+    }else{
+      (*n) = ordem;
+      break;
+    }
+  }
+  return;
+}
