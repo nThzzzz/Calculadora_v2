@@ -65,5 +65,6 @@ void verifica_ordens(int *n);
 void printMatriz(Fracao **matriz, int linhas, int colunas);
 void transposta(Fracao **matriz, int linhas, int colunas,pessoa pessoas[],int usuariologado);
 void soma(pessoa pessoas[], int usuariologado);
+void sub(pessoa pessoas[], int usuariologado);
 
 #endif
