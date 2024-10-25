@@ -849,6 +849,60 @@ void sub(pessoa pessoas[], int usuariologado) {
   free_matriz(matriz, linhas);
 }
 
+// Funcao que realiza multiplicação de matrizes
+void multi(pessoa pessoas[], int usuariologado) {
+  
+  int linhas, colunas;
+  printf("Digite o número de linhas e colunas da PRIMEIRA matriz a seguir \n");
+  verifica_linhas(&linhas, &colunas);
+  
+  int linhas2, colunas2;
+  printf("Digite o número de linhas e colunas da SEGUNDA matriz a seguir \n");
+  verifica_linhas(&linhas2, &colunas2);
+
+  if (colunas != linhas2) {
+    printf(
+        "Multiplicação de matrizes inválida! O número de colunas da primeira "
+        "matriz deve ser igual ao número de linhas da segunda matriz.\n");
+        limpabuffer();
+        espera();
+    return;
+  }
+
+  Fracao **matriz2;
+  Fracao **matriz;
+
+  cria_matriz(&matriz, linhas, colunas, 0, 1);
+  cria_matriz(&matriz2, linhas2, colunas2, 1, 1);
+
+  Fracao **matrizresultante;
+  cria_submatriz(&matrizresultante, linhas, colunas2);
+
+  // Multiplicação
+  for (int i = 0; i < linhas; i++) {
+    for (int j = 0; j < colunas2; j++) {
+      matrizresultante[i][j] = fracPadrao();
+      for (int k = 0; k < colunas; k++) {
+        matrizresultante[i][j] = somar(
+            matrizresultante[i][j], multiplicar(matriz[i][k], matriz2[k][j]));
+      }
+    }
+  }
+  gravaMatrizesEmTxt(matriz, matriz2, matrizresultante, linhas, colunas,linhas2,colunas2,
+                     usuariologado, pessoas, '*');
+
+  limpaterminal();
+  // Exibe a matriz resultante
+  printf("A matriz resultante da multiplicação é: \n");
+  printMatriz(matrizresultante, linhas, colunas2);
+  limpabuffer();
+  espera();
+
+  free_matriz(matrizresultante, linhas);
+  free_matriz(matriz2, linhas2);
+  free_matriz(matriz, linhas);
+}
+
 
 //------------------------- Funções Auxiliares --------------------------
 
