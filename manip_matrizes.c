@@ -320,22 +320,6 @@ void free_matriz(Fracao **matriz, int linhas) {
 
 // ---------------------------------- Funções do Binário ----------------------- //
 
-// Função que cria o arquivo de historico
-void criaTXTHISTORICO(FILE **file, int usuariologado, pessoa pessoas[]) {
-  char nomeregistro[100];
-  sprintf(nomeregistro, "historico_%s.txt", pessoas[usuariologado].CPF);
-  strcpy(pessoas[usuariologado].nome_hist, nomeregistro);
-
-  *file = fopen(nomeregistro, "a");
-  if (*file) {
-    printf("Arquivo criado com sucesso!\n");
-  } else {
-    printf("Erro ao criar o arquivo!\n");
-  }
-
-  fclose(*file); // Fecha o arquivo apontado pelo ponteiro.
-}
-
 // Funcao que verifia de o binario ja foi criado ou nao
 int arquivoexiste(const char *filename) {
   FILE *file = fopen(filename, "r");
