@@ -53,4 +53,12 @@ void gravaMatrizesEmTxt(Fracao **matriz1, Fracao **matriz2, Fracao **matrizresul
 void lerhistorico(int usuariologado, pessoa pessoas[]);
 void gravaSistemaEmTxt(Fracao **equacoes, Fracao *independentes, Fracao *solucoes,int icognitas, int eqs, int usuariologado, pessoa pessoas[]);
 
+//---------- Funções auxiliares ----------
+void limpaterminal();
+void espera();
+void limpabuffer();
+int verificaCPF(char *cpf);
+void verifica_linhas(int *linhas_rece, int *colunas_rece);
+void verifica_ordens(int *n);
+
 #endif
