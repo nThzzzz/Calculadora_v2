@@ -346,3 +346,249 @@ void ler(FILE *file, pessoa pessoas[], int quantidade) {
 
   fclose(file);
 }
+
+//-------------------------------------- Funções do TXT -------------------------//
+
+// função que le o histórico do usuário
+void lerhistorico(int usuariologado, pessoa pessoas[]) {
+  limpaterminal();
+  char linha[300];
+  FILE *file = fopen(pessoas[usuariologado].nome_hist, "r");
+  while (fgets(linha, sizeof(linha), file)) {
+    printf("%s", linha);
+    printf("\n");
+  }
+  fclose(file);
+  espera();
+}
+
+// Função que grava as matrizes no histórico do usuario
+void gravaMatrizesEmTxt(Fracao **matriz1, Fracao **matriz2,
+                        Fracao **matrizresultante, int linhas1, int colunas1,
+                        int linhas2, int colunas2,
+                        int usuariologado, pessoa pessoas[], char opc) {
+    FILE *arquivo = fopen(pessoas[usuariologado].nome_hist, "a");
+
+    if (arquivo == NULL) {
+        printf("Erro ao abrir o arquivo!\n");
+        return;
+    }
+
+    if (matriz2 != NULL) {  // Quando matriz2 é diferente de NULL
+        if (opc == 'D') {  // Operação D (ex: multiplicação com 2 matrizes)
+            fprintf(arquivo, "\n\t::VALORES DAS MATRIZES::\n");
+            for (int i = 0; i < linhas1; i++) {
+                for (int j = 0; j < colunas1; j++) {
+                    fprintf(arquivo, "%5d/%-5d\t", matriz1[i][j].numerador,
+                            matriz1[i][j].denominador);
+                }
+
+                fprintf(arquivo, "=\t");
+
+                for (int j = 0; j < colunas1; j++) {
+                    fprintf(arquivo, "%5d/%-5d\t", matriz2[i][j].numerador,
+                            matriz2[i][j].denominador);
+                }
+
+                fprintf(arquivo, "*\t");
+
+                for (int j = 0; j < colunas1; j++) {
+                    fprintf(arquivo, "%5d/%-5d\t", matrizresultante[i][j].numerador,
+                            matrizresultante[i][j].denominador);
+                }
+
+                fprintf(arquivo, "\n");
+            }
+        } else if (opc == '*') {
+          if(linhas1 == linhas2 && colunas1 == colunas2){
+            fprintf(arquivo, "\n\t::VALORES DAS MATRIZES::\n");
+            for (int i = 0; i < linhas1; i++) {
+                for (int j = 0; j < colunas1; j++) {
+                    fprintf(arquivo, "%5d/%-5d\t", matriz1[i][j].numerador,
+                            matriz1[i][j].denominador);
+                }
+
+                fprintf(arquivo, "%c\t", opc);  // Imprimir a operação
+
+                for (int j = 0; j < colunas1; j++) {
+                    fprintf(arquivo, "%5d/%-5d\t", matriz2[i][j].numerador,
+                            matriz2[i][j].denominador);
+                }
+
+                fprintf(arquivo, "=\t");
+
+                for (int j = 0; j < colunas1; j++) {
+                    fprintf(arquivo, "%5d/%-5d\t", matrizresultante[i][j].numerador,
+                            matrizresultante[i][j].denominador);
+                }
+
+                fprintf(arquivo, "\n");
+            }
+          }
+           else if (colunas1 == linhas2) {
+                fprintf(arquivo, "\n\t::VALORES DAS MATRIZES::\n");
+
+                // Imprimir a primeira matriz
+                for (int i = 0; i < linhas1; i++) {
+                    for (int j = 0; j < colunas1; j++) {
+                        fprintf(arquivo, "%5d/%-5d\t", matriz1[i][j].numerador,
+                                matriz1[i][j].denominador);
+                    }
+                    fprintf(arquivo, "\n");
+                }
+
+                fprintf(arquivo, "\n\t\t%c\t\n", opc);  // Imprimir o operador
+
+                // Imprimir a segunda matriz
+                for (int i = 0; i < linhas2; i++) {
+                    for (int j = 0; j < colunas2; j++) {
+                        fprintf(arquivo, "%5d/%-5d\t", matriz2[i][j].numerador,
+                                matriz2[i][j].denominador);
+                    }
+                    fprintf(arquivo, "\n");
+                }
+
+                fprintf(arquivo, "\n\t\t=\t\n");  // Imprimir o sinal de igual
+
+                // Imprimir a matriz resultante
+                for (int i = 0; i < linhas1; i++) {
+                    for (int j = 0; j < colunas2; j++) {
+                        fprintf(arquivo, "%5d/%-5d\t", matrizresultante[i][j].numerador,
+                                matrizresultante[i][j].denominador);
+                    }
+                    fprintf(arquivo, "\n");
+                }
+            } else {
+                fprintf(arquivo, "\n\tErro: A multiplicação não é possível!\n");
+            }
+        } else {  // Outras operações
+            fprintf(arquivo, "\n\t::VALORES DAS MATRIZES::\n");
+            for (int i = 0; i < linhas1; i++) {
+                for (int j = 0; j < colunas1; j++) {
+                    fprintf(arquivo, "%5d/%-5d\t", matriz1[i][j].numerador,
+                            matriz1[i][j].denominador);
+                }
+
+                fprintf(arquivo, "%c\t", opc);  // Imprimir a operação
+
+                for (int j = 0; j < colunas1; j++) {
+                    fprintf(arquivo, "%5d/%-5d\t", matriz2[i][j].numerador,
+                            matriz2[i][j].denominador);
+                }
+
+                fprintf(arquivo, "=\t");
+
+                for (int j = 0; j < colunas1; j++) {
+                    fprintf(arquivo, "%5d/%-5d\t", matrizresultante[i][j].numerador,
+                            matrizresultante[i][j].denominador);
+                }
+
+                fprintf(arquivo, "\n");
+            }
+        }
+    } else {  // Caso matriz2 seja NULL
+        if (opc == 'T') {  // Operação Transposta
+            fprintf(arquivo, "\n\t::VALORES DAS MATRIZES (Transposta)::\n");
+
+            // Imprimir a matriz original
+            for (int i = 0; i < linhas1; i++) {
+                for (int j = 0; j < colunas1; j++) {
+                    fprintf(arquivo, "%5d/%-5d\t", matriz1[i][j].numerador,
+                            matriz1[i][j].denominador);
+                }
+                fprintf(arquivo, "\n");
+            }
+
+            fprintf(arquivo, "=\n");
+
+            // Imprimir a matriz transposta
+            for (int j = 0; j < colunas1; j++) {
+                for (int i = 0; i < linhas1; i++) {
+                    fprintf(arquivo, "%5d/%-5d\t", matrizresultante[j][i].numerador,
+                            matrizresultante[j][i].denominador);
+                }
+                fprintf(arquivo, "\n");
+            }
+        } else if (opc == 'D') {  // Operação Determinante
+            fprintf(arquivo, "\n\t::VALOR DA DETERMINANTE::\n");
+            Fracao det = determinante(matriz1, linhas1);  // Função de cálculo de determinante
+            fprintf(arquivo, "Determinante: %5d/%-5d\n", det.numerador, det.denominador);
+        } else {  // Outras operações
+            fprintf(arquivo, "\n\t::VALORES DAS MATRIZES::\n");
+            for (int i = 0; i < linhas1; i++) {
+                for (int j = 0; j < colunas1; j++) {
+                    fprintf(arquivo, "%5d/%-5d\t", matriz1[i][j].numerador,
+                            matriz1[i][j].denominador);
+                }
+
+                fprintf(arquivo, "=\t");
+
+                for (int j = 0; j < colunas1; j++) {
+                    fprintf(arquivo, "%5d/%-5d\t", matrizresultante[i][j].numerador,
+                            matrizresultante[i][j].denominador);
+                }
+
+                fprintf(arquivo, "\n");
+            }
+        }
+    }
+
+    fclose(arquivo);
+}
+
+// Função que cria o arquivo de historico
+void criaTXTHISTORICO(FILE **file, int usuariologado, pessoa pessoas[]) {
+  char nomeregistro[100];
+  sprintf(nomeregistro, "historico_%s.txt", pessoas[usuariologado].CPF);
+  strcpy(pessoas[usuariologado].nome_hist, nomeregistro);
+
+  *file = fopen(nomeregistro, "a");
+  if (*file) {
+    printf("Arquivo criado com sucesso!\n");
+  } else {
+    printf("Erro ao criar o arquivo!\n");
+  }
+
+  fclose(*file); // Fecha o arquivo apontado pelo ponteiro.
+}
+
+//Função especifica para gravar os sistemas lineares
+void gravaSistemaEmTxt(Fracao **equacoes, Fracao *independentes,
+                       Fracao *solucoes, int icognitas, int eqs,
+                       int usuariologado, pessoa pessoas[]) {
+
+  FILE *arquivo = fopen(pessoas[usuariologado].nome_hist, "a");
+
+  if (arquivo == NULL) {
+    printf("Erro ao abrir o arquivo!\n");
+    return;
+  }
+
+  fprintf(arquivo, "\n\t::SISTEMA LINEAR RESOLVIDO::\n");
+
+  char letras[26] = {'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I',
+                     'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R',
+                     'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'};
+
+  // Gravando as equações
+  for (int i = 0; i < eqs; i++) {
+    for (int j = 0; j < icognitas; j++) {
+      fprintf(arquivo, "%d/%d * %c", equacoes[i][j].numerador,
+              equacoes[i][j].denominador, letras[j]);
+      if (j < icognitas - 1) {
+        fprintf(arquivo, " + ");
+      }
+    }
+    fprintf(arquivo, " = %d/%d\n", independentes[i].numerador,
+            independentes[i].denominador);
+  }
+
+  // Gravando as soluções
+  fprintf(arquivo, "\n::SOLUÇÕES::\n");
+  for (int i = 0; i < icognitas; i++) {
+    fprintf(arquivo, "%c = %d/%d\n", letras[i], solucoes[i].numerador,
+            solucoes[i].denominador);
+  }
+
+  fclose(arquivo);
+}
