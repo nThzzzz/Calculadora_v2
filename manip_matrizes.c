@@ -777,6 +777,42 @@ void transposta(Fracao **matriz, int linhas, int colunas, pessoa pessoas[], int 
     return;
 }
 
+// Função soma de matrizes
+void soma(pessoa pessoas[], int usuariologado) {
+  Fracao **matriz;
+  Fracao **matriz2;
+  int linhas, colunas;
+
+  verifica_linhas(&linhas, &colunas);
+
+  cria_matriz(&matriz, linhas, colunas, 0, 1);
+  cria_matriz(&matriz2, linhas, colunas, 1, 1);
+
+  Fracao **matrizresultante = (Fracao **)malloc(linhas * sizeof(Fracao *));
+  for (int i = 0; i < linhas; i++) {
+    matrizresultante[i] = malloc(colunas * sizeof(Fracao));
+  }
+
+  // Soma
+  for (int i = 0; i < linhas; i++) {
+    for (int j = 0; j < colunas; j++) {
+      matrizresultante[i][j] = somar(matriz[i][j], matriz2[i][j]);
+    }
+  }
+ gravaMatrizesEmTxt(matriz, matriz2, matrizresultante, linhas, colunas,linhas,colunas,
+                     usuariologado, pessoas, '+');
+
+  limpaterminal();
+  printf("A matriz RESULTANTE da soma é: \n");
+  printMatriz(matrizresultante, linhas, colunas);
+  limpabuffer();
+  espera();
+
+  free_matriz(matrizresultante, linhas);
+  free_matriz(matriz2, linhas);
+  free_matriz(matriz, linhas);
+}
+
 
 //------------------------- Funções Auxiliares --------------------------
 
