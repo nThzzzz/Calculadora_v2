@@ -5,18 +5,21 @@
 //  ./calcmatriz
 
 int main() {
-  FILE *file;
-  pessoa pessoas[10];
-  int verificacao;
-  int usuariologado = -1;
-  verificacao = arquivoexiste("dados.bin");
-  if (verificacao == 0) { // O arquivo existe
-    escrever(pessoas, 10);
-  } else {
-    ler(file, pessoas, 10);
-  }
-  printf("%d\n", verificacao);
-  menuinicial(pessoas, usuariologado);
+    FILE *file;
+    pessoa pessoas[10];
+    int verificacao;
+    int usuariologado = -1;
 
-  return 0;
+    verificacao = arquivoexiste("dados.bin");
+
+    if (verificacao == 0) { // O arquivo existe
+        escrever(pessoas, 10);
+    } else {
+        ler(file, pessoas, 10);
+    }
+
+    printf("%d\n", verificacao);
+    menuinicial(pessoas, usuariologado);
+
+    return 0;
 }
