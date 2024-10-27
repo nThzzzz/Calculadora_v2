@@ -4,7 +4,8 @@
 Fracao simplificar(Fracao f) {
   int divisor_comum = mdc(f.numerador, f.denominador);
 
-  if (f.numerador == 0 || f.denominador == 0) {
+  if ((f.numerador == 0 || f.denominador == 0) ||
+      (f.numerador == 0 && f.denominador == 0)) {
     f.numerador = 0;
     f.denominador = 1;
   } else {
