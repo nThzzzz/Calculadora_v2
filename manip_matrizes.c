@@ -707,8 +707,9 @@ void sistemalinear(pessoa pessoas[], int usuariologado) {
       printf("O sistema é SPI (Sistema Possível Indeterminado)\n");
       limpabuffer();
       espera();
+      return;
     } else {
-      printf("O sistema é SI (Sistema Impossível)\n");
+      printf("O sistema é SI (Sistema Impossível) OU SPI (Sistema Possível Indeterminado)\n");
       limpabuffer();
       espera();
       return;
