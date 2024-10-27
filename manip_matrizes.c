@@ -812,7 +812,7 @@ void menu(pessoa pessoas[], int usuariologado) {
       printf("\n");
       limpabuffer();
       espera();
-      free_matriz(matriz, linhas);
+      free_matriz(matriz, n);
       menu(pessoas, usuariologado);
       break;
     case 7:
