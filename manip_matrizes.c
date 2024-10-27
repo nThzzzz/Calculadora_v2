@@ -430,7 +430,7 @@ void inversa(pessoa pessoas[], int usuariologado) {
 void decomposicaoLU(pessoa pessoas[], int usuariologado) {
   Fracao **matriz;
   int n;
-  printf("Digite a ordem da matriz a seguir");
+  printf("Digite a ordem da matriz a seguir \n");
   verifica_ordens(&n);
   cria_matriz(&matriz, n, n, 0, 1);
 
